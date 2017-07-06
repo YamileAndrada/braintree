@@ -150,6 +150,9 @@ GEM
     selenium-webdriver (3.4.3)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    simple_form (3.5.0)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -189,7 +192,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap!
-  braintree
+  braintree (~> 2.76.0)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
@@ -201,6 +204,7 @@ DEPENDENCIES
   rails (~> 5.1.2)
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

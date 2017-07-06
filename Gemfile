@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.4.1'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -35,8 +35,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.9.9'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'simple_form'
 
-gem 'braintree'
+
+# gem 'libxml-ruby'
+# gem 'builder', '~> 3.2', '>= 3.2.2'
+gem "braintree", "~> 2.76.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
