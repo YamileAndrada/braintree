@@ -3,12 +3,22 @@
   <head>
     <title>SubscriptionsBraintree</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <% if current_user %>
+        Signed in as <%= current_user.email %> | <%= link_to "Log out", sign_out_path %>
+    <% else %>
+        <%= link_to "Log in", sign_in_path %> | <%= link_to "Sign up", sign_up_path %>
+    <% end %>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key%>">
+        <%= value %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

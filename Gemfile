@@ -36,8 +36,9 @@ gem 'jquery-rails'
 gem 'popper_js', '~> 1.9.9'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'simple_form'
-
-
+gem 'country_select'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
 # gem 'libxml-ruby'
 # gem 'builder', '~> 3.2', '>= 3.2.2'
 gem "braintree", "~> 2.76.0"

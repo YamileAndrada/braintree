@@ -1,5 +1,7 @@
 {
   "name": "Subscriptions_braintree",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "braintree-web-drop-in": "^1.4.0"
+  }
 }

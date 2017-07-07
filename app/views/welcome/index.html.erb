@@ -1,0 +1,20 @@
+<p class="lead">Available Plans</p>
+<div class="card-group">
+  <% @plans.each do |plan| %>
+    <div class="col-sm-3">
+      <div class="card text-center">
+        <div class="card-header">
+          <%= plan.name %>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title">Special title treatment</h4>
+          <p class="card-text">$ <%= plan.price %></p>
+          <%= link_to "Subscribe", new_subscription_path(plan_id: plan.id), class: "btn btn-info" %>
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
