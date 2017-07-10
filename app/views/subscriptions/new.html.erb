@@ -32,51 +32,54 @@ https://js.braintreegateway.com/v2/braintree.js
 https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js
 https://js.braintreegateway.com/web/3.19.1/js/client.min.js
 */
-  var submitButton = document.querySelector('#submit-button');
   braintree.dropin.create({
       authorization: clientToken,
       selector: '#payment-form',
       locale: 'es_ES', // esto deberia ser dinamico
-      paypalPaymentPriority: ['paypal', 'card'],
-      paypal: {
-        flow: 'checkout'
-      }
-     }, function (err, dropinInstance) {
-      if ( submitButton ) {
-        submitButton.addEventListener('click', function () {
-          dropinInstance.requestPaymentMethod(function (err, payload) {
-            // Send payload.nonce to your server.
+      paymentOptionPriority: ['paypal', 'paypalCredit', 'card'],
+       paypal: {
+         flow: 'vault',
+         amount: '23.45',
+         currency: 'USD',
+         style: {
+            size: 'medium',
+            color: 'gold',
+            shape: 'pill',
+            label: 'Subscribe Now'
+        }
+       },
+       paypalCredit: {
+         flow: 'vault',
+         amount: '23.45',
+         currency: 'USD'
+       }
+     }, function (createErr, instance) {
+        var form = document.querySelector('#myform');
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          instance.requestPaymentMethod(function (err, payload) {
+            if (err) {
+              console.log('Error', err);
+              return;
+            }
+            // Add the nonce to the form and submit
+            document.querySelector('#payment_method_nonce').value = payload.nonce;
+            form.submit();
           });
         });
-
-        if (dropinInstance.isPaymentMethodRequestable()) {
-          // This will be true if you generated the client token
-          // with a customer ID and there is a saved payment method
-          // available to tokenize with that customer.
-          submitButton.removeAttribute('disabled');
-        }
-
-        dropinInstance.on('paymentMethodRequestable', function (event) {
-          console.log(event.type); // The type of Payment Method, e.g 'CreditCard', 'PayPalAccount'.
-
-          submitButton.removeAttribute('disabled');
-        });
-
-        dropinInstance.on('noPaymentMethodRequestable', function () {
-          submitButton.setAttribute('disabled', true);
-        });
-      }
-    });
+  });
 
 </script>
 
 <div class="container">
 <h1>Subscribe</h1>
-<%= simple_form_for( :subscription, html: { class: 'well' })  do |f| %>
+<%= simple_form_for( @subscription , html: { class: 'well', id: 'myform' })  do |f| %>
 <div class="col-sm-6 col-sm-offset-1">
   <div id="payment-form">
   </div>
-  <input type="submit" value="Subscribe Now" class="btn btn-primary" id="submit-button">
+  <%= f.hidden_field :payment_method_token, id: "payment_method_nonce" %>
+   <%= f.button :submit, "Subscribe Now", :method => :post, data: { "disable-with": "..." }, id:"submit-button",
+         "data-toggle" => "tooltip", class: "btn btn-success" %>
 </div>
 <% end %>
 </div>
