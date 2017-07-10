@@ -25,13 +25,13 @@ class UsersController < ApplicationController
   end
 
   def create_braintree_customer(user)
+    #no pude crear el customer con un billing address
     result = Braintree::Customer.create(
       :email => user[:email],
       :first_name => user[:first_name],
       :last_name => user[:last_name]
     )
     if result.success?
-    debugger
       user.update_attribute(:customer_id, result.customer.id)
     else
       logger.error "Could not create braintree customer for email #{user.email}, because of #{results.errors.inspect}"

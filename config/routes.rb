@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get "/sign_up" => "users#new", as: :sign_up
   post "/sign_up" => "users#create"
 
+  post 'paypal_webhook' => 'webhooks#paypal_webhook'
+  post '/' => 'webhooks#paypal_webhook'
+
   root to: 'welcome#index'
   root 'welcome#index'
 end

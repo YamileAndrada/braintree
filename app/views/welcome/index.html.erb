@@ -7,9 +7,11 @@
           <%= plan.name %>
         </div>
         <div class="card-block">
+          <br>
           <h4 class="card-title">Special title treatment</h4>
           <p class="card-text">$ <%= plan.price %></p>
           <%= link_to "Subscribe", new_subscription_path(plan_id: plan.id), class: "btn btn-info" %>
+          <br>
         </div>
         <div class="card-footer text-muted">
         </div>
