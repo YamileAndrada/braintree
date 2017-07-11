@@ -43,6 +43,11 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'builder', '~> 3.2', '>= 3.2.2'
 gem "braintree", "~> 2.76.0"
 
+gem 'ruby-lint', '~> 2.0', '>= 2.0.4'
+gem 'reek'
+gem 'fasterer'
+gem 'rubocop'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
