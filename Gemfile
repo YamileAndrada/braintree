@@ -47,6 +47,9 @@ gem 'ruby-lint', '~> 2.0', '>= 2.0.4'
 gem 'reek'
 gem 'fasterer'
 gem 'rubocop'
+gem 'debride', '~> 1.8'
+gem 'rcodetools'
+gem 'rails-erb-lint', '~> 1.1', '>= 1.1.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
