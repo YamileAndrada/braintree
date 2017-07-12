@@ -47,3 +47,23 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+
+
+.nav-pills a {
+  background-color: transparent !important;
+  color:steelblue !important;
+  border-bottom: .25rem solid transparent !important;
+}
+
+.nav-pills .active a{
+  font-weight: bold;
+  color:steelblue !important;
+  border-bottom-color: blue !important;
+}
+
+.nav-pills a:hover,
+.nav-pills a:focus {
+  font-weight: bold;
+  border-bottom-color: steelblue !important;
+}
