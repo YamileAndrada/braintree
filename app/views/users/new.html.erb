@@ -14,7 +14,7 @@
       <%= f.input :postal_code %>
       <%= f.input :password %>
       <%= f.input :password_confirmation %>
-      <%= f.country_select :country_code, class: "dropdown" %>
+      <%= f.input :country_code, as: :country, include_blank: false %>
       <div class="text-center">
         <%= f.button :submit, "Create", :method => :post, data: { "disable-with": "..." },
          "data-toggle" => "tooltip", class: "btn btn-success" %>
